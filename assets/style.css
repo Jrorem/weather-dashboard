@@ -1,0 +1,14 @@
+.containerForecast{
+    
+    width: 50%;
+    /* display: flex;
+    justify-content:center; */
+}
+
+.col1{
+    border: solid;
+}
+
+.col2{
+    border: solid;
+}
