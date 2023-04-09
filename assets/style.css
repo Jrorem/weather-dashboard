@@ -12,3 +12,15 @@
 .col2{
     border: solid;
 }
+
+.header{
+    border: solid;
+    border-radius: 10px;
+    background-color: rgb(7, 237, 237);
+    
+}
+
+.row{
+    border: solid;
+    border-radius: 10px;
+}

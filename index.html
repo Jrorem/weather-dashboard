@@ -11,7 +11,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="./assets/style.css"/>
   </head>
   <body>
     <div class="header d-flex justify-content-center">
@@ -25,12 +25,21 @@
         <input type="text" class="form-control" id="formGroupExampleInput">
         <button type="button" class="btn btn-primary">Search</button>
       </div>
-      <div class="col-8"
+      <div class="col-8">
       <div class="containerForecast d-flex justify-content-center">
         <div class="cols-1">
-          <div class="row">Current Forecast</div>
-          <div class="row">5 day forecast</div>
+          <div class="row">
+            <h1 class="city"></h1>
+            <img class="icon">
+            <p class="temp"></p>
+            <p class="wind"></p>
+            <p class="humid"></p>
+            
+          </div>
+
+          <div class="row">5 day Forecast</div>
         </div>
+      </div>
       </div>
     </div>
 </div>
