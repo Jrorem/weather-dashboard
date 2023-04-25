@@ -7,24 +7,19 @@ var wind = document.querySelector(".wind")
 var date = document.querySelector(".date")
 var humid = document.querySelector(".humid")
 var icon = document.querySelector(".icon")
-var forecast = document.querySelector(".forecast")
+var forecast = document.querySelector("#forecast")
 var searchHistory = [];
     
 
 
 
 button.addEventListener("click", function getWeather(){
-  fetch("https://api.openweathermap.org/data/2.5/weather?q="+ inputValue.value + "&appid=9e8abcfacac489077dd005a3537e2e90&units=imperial",{
-    method: "GET"
+  fetch("https://api.openweathermap.org/data/2.5/weather?q="+ inputValue.value + "&appid=9e8abcfacac489077dd005a3537e2e90&units=imperial")
     
-  })
 .then(response => response.json())
 .then(data => {console.log(data) 
   
   
-  
-
-  var Date = data.list
   var cityValue = data["name"]
   var tempValue = data["main"]["temp"]
   var windValue = data ["wind"]["speed"]
@@ -38,29 +33,45 @@ button.addEventListener("click", function getWeather(){
   humid.innerHTML = "Humidity: " + humidValue + " %"
   $("#fDate").html(Date);
   
-  
+  // for (var i = 0; i < searchHistory.length; i ++){
   searchHistory.push(searchInput)
   localStorage.setItem("searchInput", JSON.stringify(searchHistory))
+  // }
 // function to render search history
 
-var history = document.querySelector("#history")
+
 var storedHistory = JSON.parse(localStorage.getItem("searchInput"))
 console.log(storedHistory.length)
- function renderSearch(){
-    
-      
-      var searchItem= storedHistory[storedHistory.length - 1]
-      var historyButton = document.createElement("button")
-      historyButton.textContent = searchItem
-      historyButton.classList.add("history-button")
-      history.appendChild(historyButton)
-  
-}  
 
+ function renderSearch(){
+      var history = document.querySelector("#history")
+      var historyButton = document.createElement("button")
+      history.innerHTML = "" 
+      // searchHistory.forEach(function (query) {
+      // var searchItem= storedHistory[storedHistory.length - 1]
+      
+      historyButton.textContent = storedHistory[storedHistory.length - 1]
+      historyButton.classList.add("history-button")
+      historyButton.addEventListener("click", function() { 
+      inputValue.value = storedHistory[storedHistory.length - 1]
+      getWeather()
+      
+      
+      for (var i = 0; i < searchHistory,length; i++){
+        
+      }
+ })   
+      history.appendChild(historyButton)
+    // })
+}  
+// searchHistory.push(searchInput);
+// localStorage.setItem("searchInput", JSON.stringify(searchHistory));
+// searchHistory = JSON.parse(localStorage.getItem("searchInput")) || []
 renderSearch()
     
  
-   
+   //5 day forecast
+  
   fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + inputValue.value + "&appid=9e8abcfacac489077dd005a3537e2e90&units=imperial")
   .then(response => response.json())
   .then(data => {
@@ -72,7 +83,7 @@ renderSearch()
       var iconurl = "https://openweathermap.org/img/wn/" + iconcode + ".png";
       var fTemp = data.list[i * 8].main.temp;
       var fWind = data.list[i * 8].wind.speed;
-      var fHumidity = data.list[i * 7].main.humidity;
+      var fHumidity = data.list[i * 8].main.humidity;
 
       $("#fCity").html(fCity);
       $("#fDate" + i).html(fDate);
