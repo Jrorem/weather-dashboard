@@ -29,7 +29,6 @@ button.addEventListener("click", function getWeather() {
       var tempValue = data["main"]["temp"]
       var windValue = data["wind"]["speed"]
       var humidValue = data["main"]["humidity"]
-      // var dateValue = data["list"]["dt_txt"]
       var imgApi = 'https://openweathermap.org/img/w/'
       var searchInput = $("#formGroupExampleInput").val()
       icon.innerHTML = "<img src=" + imgApi + data.weather[0].icon + ".png alt=" + data.weather.value + ' width="50" height="50"></img>'
@@ -37,23 +36,11 @@ button.addEventListener("click", function getWeather() {
       temp.innerHTML = "Temp: " + tempValue + " F"
       wind.innerHTML = "Wind speed: " + windValue + " mph"
       humid.innerHTML = "Humidity: " + humidValue + " %"
-      // date.innerHTML = dateValue
+      
 
-      // for (var i = 0; i < searchHistory.length; i ++){
       searchHistory.push(searchInput)
       localStorage.setItem("searchInput", JSON.stringify(searchHistory))
-      // }
-      // function to render search history
-
-
-
-      // searchHistory.push(searchInput);
-      // localStorage.setItem("searchInput", JSON.stringify(searchHistory));
-      // searchHistory = JSON.parse(localStorage.getItem("searchInput")) || []
-
-
-
-      //5 day forecast
+     
 
       fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + inputValue.value + "&appid=9e8abcfacac489077dd005a3537e2e90&units=imperial")
         .then(response => response.json())
@@ -81,6 +68,8 @@ button.addEventListener("click", function getWeather() {
 })
 
 
+
+
 // history button sets text content of search bar
 function renderSearch() {
 
@@ -102,20 +91,10 @@ function renderSearch() {
     })
   }
 
-  
-
-  
-  // historyButton.addEventListener("click", function () {
-  //   inputValue.value = storedHistory[storedHistory.length - 1]
-  //   getWeather()
-
-
-    
-  // })
-  
-  // })
 }
 renderSearch()
 
+const day = dayjs().format('MM/DD/YYYY')
+$(".today").text(day);
 
 
