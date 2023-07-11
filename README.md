@@ -13,4 +13,5 @@
 
 ## Type what city you would like to view and press the search button.
 
-![Screenshot 2023-07-10 181317](https://github.com/Jrorem/weather-dashboard/assets/126031175/18f7c4c9-d779-4f00-8033-984128b8d934)
+
+![Screenshot 2023-07-10 203916](https://github.com/Jrorem/weather-dashboard/assets/126031175/5c677473-c784-4299-b59e-7b4f870c91e4)
